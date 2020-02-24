@@ -54,6 +54,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -152,7 +153,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AntiDebugMethod.h" />
-    <ClInclude Include="MethodFunctions.h" />
+    <ClInclude Include="Methods\HeavensGateStuff.hpp" />
+    <ClInclude Include="Methods\MethodCheckRemoteDebuggerPresent.h" />
+    <ClInclude Include="Methods\MethodGetParentProcess.h" />
+    <ClInclude Include="Methods\MethodIsDebuggerPresent.h" />
+    <ClInclude Include="Methods\MethodNtGlobalFlag.h" />
+    <ClInclude Include="Methods\MethodPEBBeingDebugged.h" />
+    <ClInclude Include="Methods\MethodUnhandledException.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +169,11 @@
     <Image Include="gh.ico" />
     <Image Include="icon1.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="heavens_gate.asm" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>
