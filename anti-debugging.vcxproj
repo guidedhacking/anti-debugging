@@ -153,6 +153,14 @@
   <ItemGroup>
     <ClInclude Include="AntiDebugMethod.h" />
     <ClInclude Include="MethodFunctions.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="anti-debugging.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="gh.ico" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

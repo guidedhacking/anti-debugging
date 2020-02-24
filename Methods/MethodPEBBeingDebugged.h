@@ -6,15 +6,8 @@
 PPEB getPeb(void);
 
 bool MethodPEBBeingDebugged() {
-    // define our vars
-    PPEB pPeb = NULL;
-    bool dBug;
-
-    pPeb = getPeb();
-    std::cout << "ALALOELE PEB->>> " << pPeb << std::endl;
-
-    dBug = pPeb->BeingDebugged;
-    return dBug;
+    auto peb = (char*) __readfsdword(0x30);
+    return *(peb+0x2);
 }
 
 PPEB getPeb() {
