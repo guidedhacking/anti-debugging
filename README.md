@@ -24,4 +24,4 @@ You can compile yourself with Visual Studio 2019+ (no special instructions neede
 
 ## Credits
 
-Big shoutout to everyone at [www.guidedhacking.com](www.guidedhacking.com) that helped me with the development of this application. It's indeed the best resource to learn game hacking and reverse engineering. You should check it out if you haven't.
+Big shoutout to everyone at [guidedhacking.com](https://guidedhacking.com) that helped me with the development of this application. It's indeed the best resource to learn game hacking and reverse engineering. You should check it out if you haven't.
