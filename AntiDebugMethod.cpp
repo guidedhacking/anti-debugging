@@ -1,4 +1,5 @@
 #include "AntiDebugMethod.h"
+#include <algorithm>
 
 int AntiDebugMethod::current_id = 0; // added
 bool AntiDebugMethod::anyDetection = false;
@@ -8,7 +9,6 @@ void AntiDebugMethod::toggleThisMethod(int id) {
 	AntiDebugMethod* methodPtr = AntiDebugMethod::getMethodById(id);
 	methodPtr->toggle();
 }
-
 
 AntiDebugMethod* AntiDebugMethod::getMethodById(int id) {
 	std::vector<AntiDebugMethod*>::iterator it = std::find_if(AntiDebugMethod::allInstances.begin(), AntiDebugMethod::allInstances.end(), [&id] ( const AntiDebugMethod* method) {
