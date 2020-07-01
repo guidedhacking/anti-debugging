@@ -12,8 +12,8 @@
 #include "Methods/MethodPEBBeingDebugged.h"
 #include "Methods/MethodNtGlobalFlag.h"
 #include "Methods/MethodGetParentProcess.h"
-#include "Methods/HeavensGateStuff.hpp"
-
+#include "Methods/MethodWow64PEB.hpp"
+#include "Methods/MethodThreadHideFromDebugger.h"
 
 LRESULT CALLBACK WindowProcedure( HWND, UINT, WPARAM, LPARAM );
 
@@ -151,7 +151,8 @@ void AddControls( HWND hWnd ) {
 	AddMethod( MethodCheckRemoteDebuggerPresent, "CheckRemoteDebuggerPresent()" );
 	AddMethod( MethodGetParentProcess, "Check Parent Process (CreateToolhelp32Snapshot)" );
 	AddMethod( MethodUnhandledException, "UnhandledExceptionFilter" );
-	AddMethod( MethodHeavensGate, "Heaven's Gate" );
+	AddMethod( MethodWow64PEB, "WoW64 PEB->BeingDebugged" );
+	AddMethod( MethodThreadHideFromDebugger, "ThreadHideFromDebugger (will crash if debugged)" );
 
 	hLogo = CreateWindowA( "static", NULL, WS_VISIBLE | WS_CHILD | SS_BITMAP, -10, 0, 100, 100, hWnd, NULL, NULL, NULL );
 	SendMessageA( hLogo, STM_SETIMAGE, IMAGE_BITMAP, ( LPARAM )hLogoImage );

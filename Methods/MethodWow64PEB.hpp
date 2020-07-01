@@ -4,7 +4,7 @@
 
 extern "C" bool check_x64_peb( );
 
-bool MethodHeavensGate( )
+bool MethodWow64PEB( )
 {
 	//auto peb32 = (char*)__readfsdword( 0x30 );
 	//*( peb32 + 2 ) = 0;

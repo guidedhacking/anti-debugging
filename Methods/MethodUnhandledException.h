@@ -7,7 +7,6 @@
 bool hasADbgAttached = true;
 
 LONG WINAPI GetExecutedOnUnhandledException(EXCEPTION_POINTERS * pExceptionInfo) {
-    std::cout << "DJaskldjsLKdjasKDLj skaLDjsakldj saKLd a";
     hasADbgAttached = false;
 
     // thx @mambda for this tip!
