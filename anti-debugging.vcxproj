@@ -151,16 +151,24 @@
   <ItemGroup>
     <ClCompile Include="anti-debugging.cpp" />
     <ClCompile Include="AntiDebugMethod.cpp" />
+    <ClCompile Include="Methods\MethodTrapFlag.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AntiDebugMethod.h" />
     <ClInclude Include="Methods\HeavensGateStuff.hpp" />
     <ClInclude Include="Methods\MethodCheckRemoteDebuggerPresent.h" />
+    <ClInclude Include="Methods\MethodGetLocalTime.h" />
     <ClInclude Include="Methods\MethodGetParentProcess.h" />
+    <ClInclude Include="Methods\MethodGetTickCount.h" />
+    <ClInclude Include="Methods\MethodHeapFlag.h" />
     <ClInclude Include="Methods\MethodIsDebuggerPresent.h" />
+    <ClInclude Include="Methods\MethodLFH.h" />
     <ClInclude Include="Methods\MethodNtGlobalFlag.h" />
     <ClInclude Include="Methods\MethodPEBBeingDebugged.h" />
+    <ClInclude Include="Methods\MethodQPC.h" />
+    <ClInclude Include="Methods\MethodThreadHideFromDebugger.h" />
     <ClInclude Include="Methods\MethodUnhandledException.h" />
+    <ClInclude Include="Methods\MethodWow64PEB.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -169,9 +177,14 @@
   <ItemGroup>
     <Image Include="gh.ico" />
     <Image Include="icon1.ico" />
+    <Image Include="new_logo.bmp" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="heavens_gate.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

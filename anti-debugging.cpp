@@ -6,6 +6,7 @@
 #include <tlhelp32.h>
 #include <psapi.h>
 
+
 #include "Methods/MethodIsDebuggerPresent.h"
 #include "Methods/MethodUnhandledException.h"
 #include "Methods/MethodCheckRemoteDebuggerPresent.h"
@@ -14,7 +15,12 @@
 #include "Methods/MethodGetParentProcess.h"
 #include "Methods/MethodWow64PEB.hpp"
 #include "Methods/MethodThreadHideFromDebugger.h"
-
+#include "Methods/MethodTrapFlag.h"
+#include "Methods/MethodGetLocalTime.h"
+#include "Methods/MethodGetTickCount.h"
+#include "Methods/MethodQPC.h"
+#include "Methods/MethodHeapFlag.h"
+#include "Methods/MethodLFH.h"
 LRESULT CALLBACK WindowProcedure( HWND, UINT, WPARAM, LPARAM );
 
 void AddMenus( HWND hWnd );
@@ -25,7 +31,7 @@ HMENU hMenu;
 HBITMAP hLogoImage;
 HWND hLogo, hDetectedMessage;
 
-enum { WM_COMMAND_MENU_ID_EXIT = 1, WM_COMMAND_MENU_ID_ABOUT };
+enum { WM_COMMAND_MENU_ID_EXIT = 1, WM_COMMAND_MENU_ID_ABOUT , WM_COMMAND_MENU_HELP};
 // any WM_COMMAND above 90 is for the antiDebugMethods instances.
 
 FILE * fp;
@@ -93,6 +99,9 @@ LRESULT CALLBACK WindowProcedure( HWND hWnd, UINT msg, WPARAM wp, LPARAM lp ) {
 		case WM_COMMAND_MENU_ID_ABOUT:
 			MessageBoxA( NULL, "v1.0.0\n\nBy: RyccoSN \n\n\n www.guidedhacking.com", "About", MB_OK );
 			break;
+		case WM_COMMAND_MENU_HELP:
+			ShellExecuteA(NULL, "open", "https://guidedhacking.com/threads/anti-debug-techniques-a-comprehensive-guide.20391/", NULL, NULL, SW_SHOWNORMAL);
+			break;
 		}
 
 		if ( wp >= 90 )
@@ -153,6 +162,12 @@ void AddControls( HWND hWnd ) {
 	AddMethod( MethodUnhandledException, "UnhandledExceptionFilter" );
 	AddMethod( MethodWow64PEB, "WoW64 PEB->BeingDebugged" );
 	AddMethod( MethodThreadHideFromDebugger, "ThreadHideFromDebugger (will crash if debugged)" );
+	AddMethod( MethodTrapFlag, "SEH & TrapFlag Detection");
+	AddMethod( MethodLFH, "LowFragmentationHeap Detection");
+	AddMethod( MethodHeapFlags, "Heap Flags Detection");
+	AddMethod( MethodGetLocalTime, "GetLocalTime Detection");
+	AddMethod( MethodGetTickCount, "GetTickCount Detection");
+	AddMethod(MethodQPC, "QueryPerformanceCounter Detection");
 
 	hLogo = CreateWindowA( "static", NULL, WS_VISIBLE | WS_CHILD | SS_BITMAP, -10, 0, 100, 100, hWnd, NULL, NULL, NULL );
 	SendMessageA( hLogo, STM_SETIMAGE, IMAGE_BITMAP, ( LPARAM )hLogoImage );
@@ -181,6 +196,7 @@ void AddMenus( HWND hWnd ) {
 
 	AppendMenuA( hMenu, MF_POPUP, ( UINT_PTR )hFileMenu, "File" );
 	AppendMenuA( hMenu, MF_STRING, WM_COMMAND_MENU_ID_ABOUT, "About" );
+	AppendMenuA(hMenu, MF_STRING, WM_COMMAND_MENU_HELP, "Help");
 
 	SetMenu( hWnd, hMenu );
 }

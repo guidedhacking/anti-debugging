@@ -24,6 +24,9 @@
     <ClCompile Include="AntiDebugMethod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Methods\MethodTrapFlag.h">
+      <Filter>Header Files\Methods</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AntiDebugMethod.h">
@@ -53,6 +56,27 @@
     <ClInclude Include="Methods\HeavensGateStuff.hpp">
       <Filter>Header Files\Methods</Filter>
     </ClInclude>
+    <ClInclude Include="Methods\MethodThreadHideFromDebugger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods\MethodWow64PEB.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods\MethodGetLocalTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods\MethodGetTickCount.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods\MethodQPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods\MethodHeapFlag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Methods\MethodLFH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="anti-debugging.rc">
@@ -66,10 +90,17 @@
     <Image Include="gh.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="new_logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="heavens_gate.asm">
       <Filter>Header Files\Methods</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>
