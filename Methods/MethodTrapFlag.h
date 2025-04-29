@@ -3,9 +3,6 @@
 #include <iostream>
 #include <mutex>
 
-extern "C" void _trapFlagASM_x32();
-extern "C" void _trapFlagASM_x64();
-
 inline std::once_flag x64_trap_flag;
 inline void* x64_trap_asm = nullptr;
 
