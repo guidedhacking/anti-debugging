@@ -19,7 +19,6 @@ You can compile yourself with Visual Studio 2019+ (no special instructions neede
 ```
 ## TODO
 - Add more methods
-- Add support for x64 (there were some specifics I would have to deal for a few methods to support x64, and I got lazy to do it on V1).
 - Change the UI (either make it look good/modern or completely shitty like a Win95 program).
 
 #### IsDebuggerPresent

@@ -4,8 +4,6 @@
 #include <thread>
 #include <mutex>
 
-std::once_flag wow64_init_flag;
-
 typedef struct _PROCESS_BASIC_INFORMATION_WOW64
 {
     NTSTATUS ExitStatus;
@@ -18,14 +16,11 @@ typedef struct _PROCESS_BASIC_INFORMATION_WOW64
 } PROCESS_BASIC_INFORMATION_WOW64, * PPROCESS_BASIC_INFORMATION_WOW64;
 
 typedef NTSTATUS(NTAPI* tNtWow64QueryInformationProcess64)(HANDLE ProcessHandle, PROCESSINFOCLASS ProcessInformationClass, PVOID ProcessInformation, ULONG ProcessInformationLength, PULONG ReturnLength);
-tNtWow64QueryInformationProcess64 NtWow64QueryInformationProcess64 = nullptr;
 
 bool MethodWow64PEB()
 {
     // only a wow64 process is going to have this function
-    std::call_once(wow64_init_flag, [] {
-        NtWow64QueryInformationProcess64 = (tNtWow64QueryInformationProcess64)GetProcAddress(LoadLibraryA("ntdll"), "NtWow64QueryInformationProcess64");
-    });
+    static tNtWow64QueryInformationProcess64 NtWow64QueryInformationProcess64 = (tNtWow64QueryInformationProcess64)GetProcAddress(LoadLibraryA("ntdll"), "NtWow64QueryInformationProcess64");
 
     if (NtWow64QueryInformationProcess64 == nullptr)
     {
