@@ -21,6 +21,7 @@
 #include "Methods/MethodQPC.h"
 #include "Methods/MethodHeapFlag.h"
 #include "Methods/MethodLFH.h"
+
 LRESULT CALLBACK WindowProcedure( HWND, UINT, WPARAM, LPARAM );
 
 void AddMenus( HWND hWnd );
@@ -54,6 +55,7 @@ int WINAPI WinMain( HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdsh
 	{
 		return -1;
 	}
+
 	CreateWindowA( "MainWindowClass", "Guided Hacking - Debugme", WS_OVERLAPPEDWINDOW | WS_VISIBLE, 100, 100, 538, 380, NULL, NULL, NULL, NULL );
 
 	MSG msg = { 0 };
@@ -66,15 +68,16 @@ int WINAPI WinMain( HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdsh
 		}
 
 		bool localAnyDetection = AntiDebugMethod::anyDetection;
-		AntiDebugMethod::mainLoop( );
-		if ( localAnyDetection != AntiDebugMethod::anyDetection )
+		AntiDebugMethod::mainLoop();
+		if (localAnyDetection != AntiDebugMethod::anyDetection)
 		{
-			if ( AntiDebugMethod::anyDetection )
+			if (AntiDebugMethod::anyDetection)
 			{
-				SendMessageA( hDetectedMessage, WM_SETTEXT, 0, ( LPARAM )"Busted! You've been detected!" );
+				SendMessageA(hDetectedMessage, WM_SETTEXT, 0, (LPARAM)"Busted! You've been detected!");
 			}
-			else {
-				SendMessageA( hDetectedMessage, WM_SETTEXT, 0, ( LPARAM )"You're doing good. No debugger has been detected yet!" );
+			else
+			{
+				SendMessageA(hDetectedMessage, WM_SETTEXT, 0, (LPARAM)"You're doing good. No debugger has been detected yet!");
 			}
 		}
 	}
@@ -92,9 +95,7 @@ LRESULT CALLBACK WindowProcedure( HWND hWnd, UINT msg, WPARAM wp, LPARAM lp ) {
 
 		switch ( wp ) {
 		case WM_COMMAND_MENU_ID_EXIT:
-			MessageBoxA( NULL, "Who clicks exit on the File menu? Just click the X icon u dumb fuck.", "Exit", MB_ICONINFORMATION );
-
-			// DestroyWindow(hWnd);
+			DestroyWindow(hWnd);
 			break;
 		case WM_COMMAND_MENU_ID_ABOUT:
 			MessageBoxA( NULL, "v1.0.0\n\nBy: RyccoSN \n\n\n www.guidedhacking.com", "About", MB_OK );
@@ -121,11 +122,9 @@ LRESULT CALLBACK WindowProcedure( HWND hWnd, UINT msg, WPARAM wp, LPARAM lp ) {
 #endif
 		ExitProcess( 0 );
 		break;
-	default:
-		return DefWindowProcA( hWnd, msg, wp, lp );
 	}
 
-	return 0;
+	return DefWindowProcA(hWnd, msg, wp, lp);
 }
 
 void AddControls( HWND hWnd ) {
@@ -158,24 +157,24 @@ void AddControls( HWND hWnd ) {
 	AddMethod( MethodPEBBeingDebugged, "PEB->BeingDebugged" );
 	AddMethod( MethodNtGlobalFlag, "NtGlobalFlag" );
 	AddMethod( MethodCheckRemoteDebuggerPresent, "CheckRemoteDebuggerPresent()" );
-	AddMethod( MethodGetParentProcess, "Check Parent Process (CreateToolhelp32Snapshot)" );
+	AddMethod( MethodGetParentProcess, "Check Parent Process" );
 	AddMethod( MethodUnhandledException, "UnhandledExceptionFilter" );
 	AddMethod( MethodWow64PEB, "WoW64 PEB->BeingDebugged" );
 	AddMethod( MethodThreadHideFromDebugger, "ThreadHideFromDebugger (will crash if debugged)" );
-	AddMethod( MethodTrapFlag, "SEH & TrapFlag Detection");
-	AddMethod( MethodLFH, "LowFragmentationHeap Detection");
-	AddMethod( MethodHeapFlags, "Heap Flags Detection");
-	AddMethod( MethodGetLocalTime, "GetLocalTime Detection");
-	AddMethod( MethodGetTickCount, "GetTickCount Detection");
-	AddMethod(MethodQPC, "QueryPerformanceCounter Detection");
+	AddMethod( MethodTrapFlag, "SEH & TrapFlag Detection" );
+	AddMethod( MethodLFH, "LowFragmentationHeap Detection" );
+	AddMethod( MethodHeapFlags, "Heap Flags Detection" );
+	AddMethod( MethodGetLocalTime, "GetLocalTime Detection" );
+	AddMethod( MethodGetTickCount, "GetTickCount Detection" );
+	AddMethod( MethodQPC, "QueryPerformanceCounter Detection" );
 
 	hLogo = CreateWindowA( "static", NULL, WS_VISIBLE | WS_CHILD | SS_BITMAP, -10, 0, 100, 100, hWnd, NULL, NULL, NULL );
 	SendMessageA( hLogo, STM_SETIMAGE, IMAGE_BITMAP, ( LPARAM )hLogoImage );
 }
 
 void LoadImages( HWND hwnd ) {
-	hLogoImage = ( HBITMAP )LoadImageA( NULL, "new_logo.bmp", IMAGE_BITMAP, 538, 0, LR_LOADFROMFILE );
-	HANDLE hIcon = LoadImage( 0, _T( "gh.ico" ), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_LOADFROMFILE );
+	hLogoImage = ( HBITMAP )LoadImageA( NULL, "resources/new_logo.bmp", IMAGE_BITMAP, 538, 0, LR_LOADFROMFILE );
+	HANDLE hIcon = LoadImage( 0, _T( "resources/gh.ico" ), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_LOADFROMFILE );
 	if ( hIcon ) {
 		//Change both icons to the same icon handle.
 		SendMessage( hwnd, WM_SETICON, ICON_SMALL, ( LPARAM )hIcon );

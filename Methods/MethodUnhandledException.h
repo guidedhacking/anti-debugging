@@ -10,8 +10,11 @@ LONG WINAPI GetExecutedOnUnhandledException(EXCEPTION_POINTERS * pExceptionInfo)
     hasADbgAttached = false;
 
     // thx @mambda for this tip!
+#ifdef _WIN64
+    pExceptionInfo->ContextRecord->Rip += 1;
+#else
     pExceptionInfo->ContextRecord->Eip += 1;
-    
+#endif
     return EXCEPTION_CONTINUE_EXECUTION;
 }
 
@@ -22,7 +25,7 @@ bool MethodUnhandledException() {
       (LPTOP_LEVEL_EXCEPTION_FILTER) GetExecutedOnUnhandledException
     );
 
-    __debugbreak( );
+    //__debugbreak( );
 
     return hasADbgAttached;
 }

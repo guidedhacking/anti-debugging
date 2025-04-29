@@ -5,8 +5,13 @@
 
 bool MethodLFH() {
 	auto processHeap = reinterpret_cast<ULONG64>(GetProcessHeap());
+	int offset = 0xE4;
 
-	auto LFHPtr = reinterpret_cast<VOID**>(processHeap + 0xe4);
+#ifdef _WIN64
+	offset = 0x198;
+#endif 
+
+	auto LFHPtr = reinterpret_cast<VOID**>(processHeap + offset);
 
 	if (*LFHPtr == NULL)
 		return true;

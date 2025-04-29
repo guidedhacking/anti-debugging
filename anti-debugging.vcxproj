@@ -79,9 +79,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)-x$(PlatformArchitecture)</TargetName>
+    <OutDir>$(SolutionDir)bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)-x$(PlatformArchitecture)</TargetName>
+    <OutDir>$(SolutionDir)bin</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,6 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,9 +145,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -155,7 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AntiDebugMethod.h" />
-    <ClInclude Include="Methods\HeavensGateStuff.hpp" />
+    <ClInclude Include="Helpers.h" />
     <ClInclude Include="Methods\MethodCheckRemoteDebuggerPresent.h" />
     <ClInclude Include="Methods\MethodGetLocalTime.h" />
     <ClInclude Include="Methods\MethodGetParentProcess.h" />
@@ -175,12 +181,13 @@
     <ResourceCompile Include="anti-debugging.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="gh.ico" />
+    <Image Include="gh.ico">
+      <DeploymentContent>false</DeploymentContent>
+    </Image>
     <Image Include="icon1.ico" />
-    <Image Include="new_logo.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="heavens_gate.asm" />
+    <Image Include="new_logo.bmp">
+      <DeploymentContent>false</DeploymentContent>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

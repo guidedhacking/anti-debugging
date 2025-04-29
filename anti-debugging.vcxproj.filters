@@ -53,9 +53,6 @@
     <ClInclude Include="Methods\MethodUnhandledException.h">
       <Filter>Header Files\Methods</Filter>
     </ClInclude>
-    <ClInclude Include="Methods\HeavensGateStuff.hpp">
-      <Filter>Header Files\Methods</Filter>
-    </ClInclude>
     <ClInclude Include="Methods\MethodThreadHideFromDebugger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -77,6 +74,9 @@
     <ClInclude Include="Methods\MethodLFH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers.h">
+      <Filter>Header Files\Methods</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="anti-debugging.rc">
@@ -93,11 +93,6 @@
     <Image Include="new_logo.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="heavens_gate.asm">
-      <Filter>Header Files\Methods</Filter>
-    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

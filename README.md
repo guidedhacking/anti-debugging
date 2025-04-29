@@ -2,7 +2,7 @@
 
 Implementation of some anti-debugging techniques on a (bad looking) Win32 application. The idea is to cover most used anti-debugging methods, so feel free to drop a Pull Request anytime 😏.
 
-![](https://i.imgur.com/7nLJ5Ff.png)
+![](preview.png)
 
 ## How to use it
 
@@ -37,6 +37,14 @@ This is another field in the PEB. The `NtGlobalFlag` is used by the system to st
 #### CheckRemoteDebuggerPresent
 
 This is a Windows API function that checks if a specific process is being debugged by a remote debugger. The function takes two parameters: a handle to the process to check, and a pointer to a boolean variable that receives the result. If the process is being debugged, the function sets the boolean to true. This method can be used to detect remote debugging, but like the other methods, it can be bypassed by an attacker who knows what they're doing.
+
+#### Timing Checks
+
+This uses QueryPerformanceCounter, GetTickCount, and GetLocalTime to check for breakpoints, execution pausing, and process suspending. All of these functions query their current values, and wait a short duration before querying again. If the difference between queries is too large, the process was frozen or halted in some way.
+
+#### SEH_TrapFlag
+
+This is a method that constantly triggers exceptions, each of these exceptions should hit the SEH, where we catch it and handle it properly. If these exceptions do not hit our exception handler, something has replaced it. 
 
 ## Credits
 
