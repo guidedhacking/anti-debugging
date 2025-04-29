@@ -15,7 +15,7 @@ NtQueryInformationThread_t fnNtQueryInformationThread = NULL;
 
 bool MethodThreadHideFromDebugger() {
 
-    HANDLE hThread = GetCurrentThread();
+    HANDLE hThread = (HANDLE)-2;
     fnNtSetInformationThread = (NtSetInformationThread_t)GetProcAddress(GetModuleHandle(TEXT("ntdll.dll")), "NtSetInformationThread");
     fnNtQueryInformationThread = (NtQueryInformationThread_t)GetProcAddress(GetModuleHandle(TEXT("ntdll.dll")), "NtQueryInformationThread");
 
@@ -29,7 +29,7 @@ bool MethodThreadHideFromDebugger() {
     ULONG lRet = 0;
 
     NTSTATUS errorCode = fnNtQueryInformationThread(hThread, ThreadHideFromDebugger, &lHideThreadQuery, sizeof(lHideThreadQuery), &lRet);
-    CloseHandle(hThread);
+    
 
 	return false; //it will crash if its detected anyway 
 }
