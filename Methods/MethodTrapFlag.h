@@ -25,7 +25,7 @@ inline bool MethodTrapFlag()
             memcpy(x64_trap_asm, function_asm, sizeof(function_asm));
 
             DWORD old;
-            VirtualProtect(nullptr, 0x1000, PAGE_EXECUTE_READ, &old);
+            VirtualProtect(x64_trap_asm, 0x1000, PAGE_EXECUTE_READ, &old);
         });
 
         reinterpret_cast<void(*)()>(x64_trap_asm)();
