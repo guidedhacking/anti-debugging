@@ -1,6 +1,6 @@
-# GuidedHacking - Debugme 
+# Guided Hacking AntiDebug Bypass Practice Tool
 
-Implementation of some anti-debugging techniques on a (bad looking) Win32 application. The idea is to cover most used anti-debugging methods, so feel free to drop a Pull Request anytime 😏.
+Implementation of some anti-debugging techniques on a (bad looking) Win32 application. The idea is to cover most used anti-debugging methods.
 
 ![](preview.png)
 
