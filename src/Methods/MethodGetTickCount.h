@@ -5,12 +5,12 @@
 
 
 bool MethodGetTickCount() {
-    DWORD tickReference = GetTickCount64();
+    auto tickReference = GetTickCount64();
 
     Sleep(50); 
 
-    DWORD currentTick = GetTickCount64();
-    DWORD elapsedTime = currentTick - tickReference;
+    auto currentTick = GetTickCount64();
+    auto elapsedTime = currentTick - tickReference;
 
     bool detection_value = elapsedTime > 100;
     static timer_detection tick_detection(detection_value);

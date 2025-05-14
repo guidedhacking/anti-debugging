@@ -74,11 +74,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)-x$(PlatformArchitecture)-debug</TargetName>
-    <OutDir>$(SolutionDir)bin</OutDir>
+    <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin</OutDir>
+    <OutDir>$(SolutionDir)bin\</OutDir>
     <TargetName>$(ProjectName)-x$(PlatformArchitecture)-debug</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,7 +89,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)-x$(PlatformArchitecture)</TargetName>
-    <OutDir>$(SolutionDir)bin</OutDir>
+    <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -161,51 +161,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="anti-debugging.cpp" />
-    <ClCompile Include="AntiDebugMethod.cpp" />
-    <ClCompile Include="imgui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="imgui\imgui_impl_win32.cpp" />
-    <ClCompile Include="imgui\DX11Base.cpp" />
-    <ClCompile Include="imgui\imgui.cpp" />
-    <ClCompile Include="imgui\imgui_demo.cpp" />
-    <ClCompile Include="imgui\imgui_draw.cpp" />
-    <ClCompile Include="imgui\imgui_tables.cpp" />
-    <ClCompile Include="imgui\imgui_widgets.cpp" />
-    <ClCompile Include="Methods\MethodTrapFlag.h" />
+    <ClCompile Include="src\anti-debugging.cpp" />
+    <ClCompile Include="src\AntiDebugMethod.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\imgui\DX11Base.cpp" />
+    <ClCompile Include="src\imgui\imgui.cpp" />
+    <ClCompile Include="src\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\Methods\MethodTrapFlag.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AntiDebugMethod.h" />
-    <ClInclude Include="Helpers.h" />
-    <ClInclude Include="imgui\imgui_impl_dx11.h" />
-    <ClInclude Include="imgui\imgui_impl_win32.h" />
-    <ClInclude Include="imgui\DX11Base.h" />
-    <ClInclude Include="imgui\imconfig.h" />
-    <ClInclude Include="imgui\imgui.h" />
-    <ClInclude Include="imgui\imgui_internal.h" />
-    <ClInclude Include="imgui\imstb_rectpack.h" />
-    <ClInclude Include="imgui\imstb_textedit.h" />
-    <ClInclude Include="imgui\imstb_truetype.h" />
-    <ClInclude Include="imgui\stb_image.h" />
-    <ClInclude Include="json.hpp" />
-    <ClInclude Include="Methods\MethodCheckRemoteDebuggerPresent.h" />
-    <ClInclude Include="Methods\MethodGetLocalTime.h" />
-    <ClInclude Include="Methods\MethodGetParentProcess.h" />
-    <ClInclude Include="Methods\MethodGetTickCount.h" />
-    <ClInclude Include="Methods\MethodHeapFlag.h" />
-    <ClInclude Include="Methods\MethodIsDebuggerPresent.h" />
-    <ClInclude Include="Methods\MethodLFH.h" />
-    <ClInclude Include="Methods\MethodNtGlobalFlag.h" />
-    <ClInclude Include="Methods\MethodPEBBeingDebugged.h" />
-    <ClInclude Include="Methods\MethodQPC.h" />
-    <ClInclude Include="Methods\MethodThreadHideFromDebugger.h" />
-    <ClInclude Include="Methods\MethodUnhandledException.h" />
-    <ClInclude Include="Methods\MethodWow64PEB.hpp" />
-    <ClInclude Include="shared.h" />
-    <ClInclude Include="Methods\TimerDetection.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\AntiDebugMethod.h" />
+    <ClInclude Include="src\Helpers.h" />
+    <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="src\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="src\imgui\DX11Base.h" />
+    <ClInclude Include="src\imgui\imconfig.h" />
+    <ClInclude Include="src\imgui\imgui.h" />
+    <ClInclude Include="src\imgui\imgui_internal.h" />
+    <ClInclude Include="src\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\imgui\stb_image.h" />
+    <ClInclude Include="src\json.hpp" />
+    <ClInclude Include="src\Methods\MethodCheckRemoteDebuggerPresent.h" />
+    <ClInclude Include="src\Methods\MethodGetLocalTime.h" />
+    <ClInclude Include="src\Methods\MethodGetParentProcess.h" />
+    <ClInclude Include="src\Methods\MethodGetTickCount.h" />
+    <ClInclude Include="src\Methods\MethodHeapFlag.h" />
+    <ClInclude Include="src\Methods\MethodIsDebuggerPresent.h" />
+    <ClInclude Include="src\Methods\MethodLFH.h" />
+    <ClInclude Include="src\Methods\MethodNtGlobalFlag.h" />
+    <ClInclude Include="src\Methods\MethodPEBBeingDebugged.h" />
+    <ClInclude Include="src\Methods\MethodQPC.h" />
+    <ClInclude Include="src\Methods\MethodThreadHideFromDebugger.h" />
+    <ClInclude Include="src\Methods\MethodUnhandledException.h" />
+    <ClInclude Include="src\Methods\MethodWow64PEB.hpp" />
+    <ClInclude Include="src\shared.h" />
+    <ClInclude Include="src\Methods\TimerDetection.h" />
+    <ClInclude Include="src\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="anti-debugging.rc" />
+    <ResourceCompile Include="src\anti-debugging.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="gh.ico">
