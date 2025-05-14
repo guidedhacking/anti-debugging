@@ -1,6 +1,8 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include <chrono>
+#include "TimerDetection.h"
 
 bool MethodQPC()
 {
@@ -11,5 +13,13 @@ bool MethodQPC()
     Sleep(50);
 
     QueryPerformanceCounter(&end);
-    return (end.QuadPart - start.QuadPart) * 1000 / frequency.QuadPart > 100;
+    
+    bool detection_value = (end.QuadPart - start.QuadPart) * 1000 / frequency.QuadPart > 100;
+
+    static timer_detection qpc_detection(detection_value);
+    qpc_detection.frame();
+    qpc_detection.set_condition(!qpc_detection.get_detected());
+    qpc_detection.update_detection(detection_value);
+    return qpc_detection.get_detected();
 }
+ 

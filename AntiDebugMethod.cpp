@@ -75,6 +75,7 @@ bool AntiDebugMethod::checkIfDetected() {
 			char newButtonName[200];
 			strcpy_s(newButtonName, name.c_str());
 			strcat_s(newButtonName, "\n ENABLED - DETECTED!");
+			updated_name = newButtonName;
 			SendMessageA(enableButtonHwnd, WM_SETTEXT, 0, (LPARAM)newButtonName);
 		}
 	} else {
@@ -95,7 +96,6 @@ bool AntiDebugMethod::createGUI(HWND hWnd) {
 	else {
 		strcat_s(newButtonName, "\n DISABLED");
 	}
-
 	enableButtonHwnd = CreateWindowA("button", newButtonName, WS_VISIBLE | WS_CHILD | BS_MULTILINE | SS_CENTER, windowPosX, windowPosY, 230, 50, hWnd, (HMENU)(90+id), NULL,NULL);
 	return 1;
 };

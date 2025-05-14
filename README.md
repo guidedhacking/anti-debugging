@@ -2,11 +2,14 @@
 
 Implementation of some anti-debugging techniques on a (bad looking) Win32 application. The idea is to cover most used anti-debugging methods.
 
-![](preview.png)
+ImGui                      |  Windows
+:-------------------------:|:-------------------------:
+![](new_preview.png)  |  ![](preview.png)
 
 ## How to use it
 
-You can compile yourself with Visual Studio 2019+ (no special instructions needed) or just download the binary on the release tab. Fire it up, attach a debugger and start enabling detection methods. Then, try to bypass some and have fun.
+You can compile yourself with Visual Studio 2019+ or just download the binary on the release tab. Fire it up, attach a debugger and start enabling detection methods. Then, try to bypass some and have fun.
+When compiling you need to copy the resources folder to the output folder for the images to display.
 
 ## How to add a new anti debugging method 
 

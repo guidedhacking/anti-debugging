@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include "TimerDetection.h"
 
 bool MethodGetLocalTime()
 {
@@ -22,5 +23,10 @@ bool MethodGetLocalTime()
     uiEnd.LowPart = fEnd.dwLowDateTime;
     uiEnd.HighPart = fEnd.dwHighDateTime;
 
-    return (((uiEnd.QuadPart - uiStart.QuadPart) * 100) / 1000000) > 100; 
+    bool detection_value = (((uiEnd.QuadPart - uiStart.QuadPart) * 100) / 1000000) > 100;
+    static timer_detection local_time_detection(detection_value);
+    local_time_detection.frame();
+    local_time_detection.set_condition(!local_time_detection.get_detected());
+    local_time_detection.update_detection(detection_value);
+    return local_time_detection.get_detected();
 }
