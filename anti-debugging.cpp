@@ -91,7 +91,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdsho
 	}
 	
 
-	HWND hwnd = CreateWindowA( "MainWindowClass", "Guided Hacking - AntiDebug", (WS_OVERLAPPEDWINDOW | WS_VISIBLE) & ~(WS_MAXIMIZEBOX), 100, 100, 538, 330, NULL, NULL, NULL, NULL);
+	HWND hwnd = CreateWindowA("MainWindowClass", "Guided Hacking - AntiDebug", (WS_OVERLAPPEDWINDOW | WS_VISIBLE) & ~(WS_MAXIMIZEBOX), 100, 100, 538, 330, NULL, NULL, NULL, NULL);
 	SetIcon(hwnd);
 
 #ifdef USE_IMGUI
