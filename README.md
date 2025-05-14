@@ -13,11 +13,20 @@ When compiling you need to copy the resources folder to the output folder for th
 
 1. Create a new file `.h` on the Methods folder with the name of the method. 
 2. Implement your anti debugging function on the new file. This function will run on the main loop if enabled. It has to return a `bool` stating if a debugger was detected or not.
-2. On `anti-debugging.cpp`, find the lines where it creates instances of `AntiDebugMethod` class on the heap. Create a new instance, passing the pointer to your function, coordinates for the button on the UI and the method name like:
+2. On `anti-debugging.cpp`, look for the `AddControls` function, simply register your method the same way all the others are, using the `AddMethod` function, the first argument is a callback to your function, and the second is what you want it to be called.
+3. Your callback function needs to take 0 arguments, and return `true` if anything is detected, otherwise return `false`
 ```cpp
-    AntiDebugMethod* sixthOne = new AntiDebugMethod(MethodUnhandledException, 270, 220, "UnhandledExceptionFilter");
-	sixthOne->createGUI(hWnd);`
+
+bool MyCoolMethod() 
+{
+	return true;
+}
+
+// renders as "My Cool Method Enabled - DETECTED
+// because we returned true
+AddMethod(MyCoolMethod, "My Cool Method");
 ```
+
 ## TODO
 - Add more methods
 
