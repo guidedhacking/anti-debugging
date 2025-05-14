@@ -215,6 +215,7 @@
     <Image Include="new_logo.bmp">
       <DeploymentContent>false</DeploymentContent>
     </Image>
+    <Image Include="resources\gh.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -177,7 +177,7 @@ LRESULT CALLBACK WindowProcedure( HWND hWnd, UINT msg, WPARAM wp, LPARAM lp ) {
 			DestroyWindow(hWnd);
 			break;
 		case WM_COMMAND_MENU_ID_ABOUT:
-			MessageBoxA(hWnd, "v1.0.0\n\nBy: RyccoSN \n\n\n www.guidedhacking.com", "About", MB_OK );
+			MessageBoxA(hWnd, "Version: 2.0.0\n\nCreated By: RyccoSN\nUpdated By: ssno & R1perXNX\n\nwww.guidedhacking.com", "About", MB_OK );
 			break;
 		case WM_COMMAND_MENU_HELP:
 			ShellExecuteA(NULL, "open", "https://guidedhacking.com/threads/anti-debug-techniques-a-comprehensive-guide.20391/", NULL, NULL, SW_SHOWNORMAL);
