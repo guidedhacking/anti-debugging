@@ -22,7 +22,7 @@ bool MyCoolMethod()
 	return true;
 }
 
-// renders as "My Cool Method Enabled - DETECTED
+// renders as "My Cool Method Enabled - DETECTED"
 // because we returned true
 AddMethod(MyCoolMethod, "My Cool Method");
 ```
