@@ -1,25 +1,33 @@
 # Guided Hacking AntiDebug Bypass Practice Tool
 
-Implementation of some anti-debugging techniques on a (bad looking) Win32 application. The idea is to cover most used anti-debugging methods.
+Implementation of some anti-debugging techniques on a Win32 application. The idea is to cover the most commonly used anti-debugging methods.
 
-![](preview.png)
+![](preview.png) 
 
 ## How to use it
 
-You can compile yourself with Visual Studio 2019+ (no special instructions needed) or just download the binary on the release tab. Fire it up, attach a debugger and start enabling detection methods. Then, try to bypass some and have fun.
+You can compile yourself with Visual Studio 2019+ or just download the binary on the release tab. Fire it up, attach a debugger and start enabling detection methods. Then, try to bypass some and have fun.
+When compiling you need to copy the resources folder to the output folder for the images to display.
 
 ## How to add a new anti debugging method 
 
 1. Create a new file `.h` on the Methods folder with the name of the method. 
 2. Implement your anti debugging function on the new file. This function will run on the main loop if enabled. It has to return a `bool` stating if a debugger was detected or not.
-2. On `anti-debugging.cpp`, find the lines where it creates instances of `AntiDebugMethod` class on the heap. Create a new instance, passing the pointer to your function, coordinates for the button on the UI and the method name like:
+2. On `anti-debugging.cpp`, look for the `AddControls` function, simply register your method the same way all the others are, using the `AddMethod` function, the first argument is a callback to your function, and the second is what you want it to be called.
+3. Your callback function needs to take 0 arguments, and return `true` if anything is detected, otherwise return `false`
 ```cpp
-    AntiDebugMethod* sixthOne = new AntiDebugMethod(MethodUnhandledException, 270, 220, "UnhandledExceptionFilter");
-	sixthOne->createGUI(hWnd);`
+
+bool MyCoolMethod() 
+{
+	return true;
+}
+
+// renders as "My Cool Method Enabled - DETECTED"
+// because we returned true
+AddMethod(MyCoolMethod, "My Cool Method");
 ```
-## TODO
-- Add more methods
-- Change the UI (either make it look good/modern or completely shitty like a Win95 program).
+
+## Methods
 
 #### IsDebuggerPresent
 
@@ -44,6 +52,9 @@ This uses QueryPerformanceCounter, GetTickCount, and GetLocalTime to check for b
 #### SEH_TrapFlag
 
 This is a method that constantly triggers exceptions, each of these exceptions should hit the SEH, where we catch it and handle it properly. If these exceptions do not hit our exception handler, something has replaced it. 
+
+## TODO
+- Add more methods
 
 ## Credits
 

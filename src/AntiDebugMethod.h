@@ -8,23 +8,26 @@ class AntiDebugMethod
 {
 private:
 	static int current_id; 
-	static std::vector<AntiDebugMethod*> allInstances;
-	std::string name;
 	int id;
-	bool enabled = false;
 	bool detected = false;
-	int windowPosX, windowPosY;
 	HWND enableButtonHwnd;
 public:
+	int windowPosX, windowPosY;
+	std::string name;
+	std::string updated_name;
+	bool enabled = false;
 	bool (*funcPtr)();
 	static void toggleThisMethod(int id);
 	static void mainLoop();
 	static bool anyDetection;
 	static AntiDebugMethod* getMethodById(int id);
 
-	void toggle();
+
 	AntiDebugMethod(bool (*funcPtrParam)(), int windowPosXParam, int windowPosYParam, std::string nameParam);
+
+	void toggle();
 	bool checkIfDetected();
 	bool createGUI(HWND hWnd);
+	static std::vector<AntiDebugMethod*> allInstances;
 };
 
