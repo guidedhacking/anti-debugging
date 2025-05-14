@@ -27,8 +27,7 @@ bool MyCoolMethod()
 AddMethod(MyCoolMethod, "My Cool Method");
 ```
 
-## TODO
-- Add more methods
+## Methods
 
 #### IsDebuggerPresent
 
@@ -53,6 +52,9 @@ This uses QueryPerformanceCounter, GetTickCount, and GetLocalTime to check for b
 #### SEH_TrapFlag
 
 This is a method that constantly triggers exceptions, each of these exceptions should hit the SEH, where we catch it and handle it properly. If these exceptions do not hit our exception handler, something has replaced it. 
+
+## TODO
+- Add more methods
 
 ## Credits
 
