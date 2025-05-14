@@ -20,7 +20,6 @@ When compiling you need to copy the resources folder to the output folder for th
 ```
 ## TODO
 - Add more methods
-- Change the UI (either make it look good/modern or completely shitty like a Win95 program).
 
 #### IsDebuggerPresent
 
