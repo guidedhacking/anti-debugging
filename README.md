@@ -1,10 +1,8 @@
 # Guided Hacking AntiDebug Bypass Practice Tool
 
-Implementation of some anti-debugging techniques on a cool Win32 application. The idea is to cover the most commonly used anti-debugging methods.
+Implementation of some anti-debugging techniques on a Win32 application. The idea is to cover the most commonly used anti-debugging methods.
 
-ImGui                      |  Windows
-:-------------------------:|:-------------------------:
-![](new_preview.png)  |  ![](preview.png)
+![](preview.png) 
 
 ## How to use it
 
