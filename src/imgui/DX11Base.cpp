@@ -10,19 +10,19 @@
 #include "../AntiDebugMethod.h"
 #include "../shared.h"
 
+#include "../Roboto-Regular.h"
+
 // globals
 IDXGISwapChain* swapchain = nullptr;
 ID3D11Device* device = nullptr;
 ID3D11DeviceContext* context = nullptr;
 ID3D11RenderTargetView* target = nullptr;
-FLOAT clear_color[4] = { 34.0935 / 255.f, 34.0935 / 255.f, 34.0935 / 255.f, 1.0f };
+FLOAT clear_color[4] = { 34.0936f / 255.f, 34.0936f / 255.f, 34.0936f / 255.f, 1.0f };
 ID3D11ShaderResourceView* gh_banner = nullptr;
 int gh_banner_size_x, gh_banner_size_y;
 float image_scale = 0.343;
 int resize_x, resize_y;
 HWND window;
-
-
 
 std::vector<std::string> get_string_lines(std::string& str);
 
@@ -159,6 +159,8 @@ bool dx11_base::create(HWND hwnd)
 		imGuiIO.IniFilename = NULL;
 		imGuiIO.LogFilename = NULL;
 
+		imGuiIO.FontDefault = imGuiIO.Fonts->AddFontFromMemoryTTF(robotoRegular, sizeof(robotoRegular), 15.f);
+
 		return true;
 	}
 	else
@@ -246,12 +248,12 @@ void dx11_base::on_render()
 		ImGui::EndMenuBar();
 	}
 
-	ImGui::SetCursorPos({ -1, 20 });
+	ImGui::SetCursorPos({ -1, 21 });
 	ImGui::Image((ImTextureID)gh_banner, ImVec2(gh_banner_size_x * image_scale, gh_banner_size_y * image_scale));
 		
 	ImVec2 new_pos = { ImGui::GetWindowWidth() / 2, 80 };
 	new_pos.x -= ImGui::CalcTextSize(new_message.c_str()).x * .5;
-	new_pos.y -= ImGui::CalcTextSize(new_message.c_str()).y * .45;
+	new_pos.y -= ImGui::CalcTextSize(new_message.c_str()).y * .3;
 	ImGui::SetCursorPos(new_pos);
 
 	if (strstr(new_message.c_str(), "Busted"))
