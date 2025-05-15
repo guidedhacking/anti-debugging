@@ -6,7 +6,7 @@ Implementation of some anti-debugging techniques on a Win32 application. The ide
 
 ## How to use it
 
-You can compile yourself with Visual Studio 2019+ or just download the binary on the release tab. Fire it up, attach a debugger and start enabling detection methods. Then, try to bypass some and have fun.
+You can compile yourself with Visual Studio 2019+ or just download the binary [here](https://guidedhacking.com/threads/gh-debugme-win32-app-with-anti-debugging-techniques.14627/). Fire it up, attach a debugger and start enabling detection methods. Then, try to bypass some and have fun.
 When compiling you need to copy the resources folder to the output folder for the images to display.
 
 ## How to add a new anti debugging method 
