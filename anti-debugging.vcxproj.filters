@@ -51,6 +51,9 @@
     <ClCompile Include="src\imgui\DX11Base.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Roboto-Regular.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AntiDebugMethod.h">

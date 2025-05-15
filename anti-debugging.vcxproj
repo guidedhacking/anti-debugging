@@ -172,6 +172,7 @@
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Methods\MethodTrapFlag.h" />
+    <ClCompile Include="src\Roboto-Regular.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AntiDebugMethod.h" />
